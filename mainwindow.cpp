@@ -193,11 +193,16 @@ void MainWindow::on_exportButton_clicked()
 void MainWindow::on_importButton_clicked()
 {
     QString path = QFileDialog::getOpenFileName(this, tr("Open txt"), ".", tr("txt Files(*.txt)"));
+    Matrix::MatrixType mat;
     if (path.length() != 0)
     {
         std::fstream fs(path.toStdString());
-        modelMatrix = Matrix::Import(fs);
+        mat = Matrix::Import(fs);
     }
+    dim = mat.size();
+    ui->dimEdit->setText(QString::number(dim));
+    InitTableView(mat.size());
+    modelMatrix = mat;
     curMatrix = &modelMatrix;
     Update();
 }
