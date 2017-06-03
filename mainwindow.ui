@@ -37,9 +37,20 @@
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
-      <property name="gridStyle">
-       <enum>Qt::NoPen</enum>
+      <property name="font">
+       <font>
+        <pointsize>6</pointsize>
+       </font>
       </property>
+      <property name="gridStyle">
+       <enum>Qt::DotLine</enum>
+      </property>
+      <attribute name="horizontalHeaderMinimumSectionSize">
+       <number>1</number>
+      </attribute>
+      <attribute name="verticalHeaderMinimumSectionSize">
+       <number>1</number>
+      </attribute>
      </widget>
     </item>
     <item row="3" column="0">
