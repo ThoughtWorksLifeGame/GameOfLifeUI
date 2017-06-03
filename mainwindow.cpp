@@ -167,6 +167,8 @@ void MainWindow::on_startButton_clicked()
 void MainWindow::on_historySlide_valueChanged(int value)
 {
     curMatrix = director->GetHistory(value - 1);
+    if (curMatrix)
+        modelMatrix = *curMatrix;
     Update();
 }
 
@@ -203,6 +205,21 @@ void MainWindow::on_importButton_clicked()
     ui->dimEdit->setText(QString::number(dim));
     InitTableView(mat.size());
     modelMatrix = mat;
+    curMatrix = &modelMatrix;
+    Update();
+}
+
+void MainWindow::on_randomButton_clicked()
+{
+    modelMatrix = Matrix::MatrixType(dim, std::vector<bool>(dim));
+    srand(time(NULL));
+    for (int x = 0; x < dim; x++)
+    {
+        for (int y = 0; y < dim; y++)
+        {
+            modelMatrix[x][y] = rand() % 2;
+        }
+    }
     curMatrix = &modelMatrix;
     Update();
 }

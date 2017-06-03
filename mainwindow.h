@@ -53,6 +53,7 @@ private slots:
     void on_historyLimit_textChanged(const QString &arg1);
     void on_exportButton_clicked();
     void on_importButton_clicked();
+    void on_randomButton_clicked();
 };
 
 #endif // MAINWINDOW_H
